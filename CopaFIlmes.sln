@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A55F487E-F618-4289-9B55-26F48BCCF121}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1C67668E-CC49-44F3-9587-24CA368F3DF1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopaFilmes.API", "src\CopaFIlmes.API\CopaFilmes.API.csproj", "{325F2797-AEBB-4516-A36D-E350D873E1B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopaFilmes.Campeonato.Command", "src\CopaFilmes.Campeonato.Command\CopaFilmes.Campeonato.Command.csproj", "{A23005C4-12E6-4FD2-99FB-C002306B0DAC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopaFilmes.Campeonato.CommandHandler", "src\CopaFilmes.Campeonato.CommandHandler\CopaFilmes.Campeonato.CommandHandler.csproj", "{BED31882-89BC-4A8D-8BCC-8AF883E9AA18}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopaFilmes.Campeonato.Tests", "test\CopaFilmes.Campeonato.Tests\CopaFilmes.Campeonato.Tests.csproj", "{E60EB4A0-4E74-4E81-B975-27DCCC0B14A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{325F2797-AEBB-4516-A36D-E350D873E1B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{325F2797-AEBB-4516-A36D-E350D873E1B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{325F2797-AEBB-4516-A36D-E350D873E1B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{325F2797-AEBB-4516-A36D-E350D873E1B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A23005C4-12E6-4FD2-99FB-C002306B0DAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A23005C4-12E6-4FD2-99FB-C002306B0DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A23005C4-12E6-4FD2-99FB-C002306B0DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A23005C4-12E6-4FD2-99FB-C002306B0DAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BED31882-89BC-4A8D-8BCC-8AF883E9AA18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BED31882-89BC-4A8D-8BCC-8AF883E9AA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BED31882-89BC-4A8D-8BCC-8AF883E9AA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BED31882-89BC-4A8D-8BCC-8AF883E9AA18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E60EB4A0-4E74-4E81-B975-27DCCC0B14A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E60EB4A0-4E74-4E81-B975-27DCCC0B14A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E60EB4A0-4E74-4E81-B975-27DCCC0B14A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E60EB4A0-4E74-4E81-B975-27DCCC0B14A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{325F2797-AEBB-4516-A36D-E350D873E1B7} = {A55F487E-F618-4289-9B55-26F48BCCF121}
+		{A23005C4-12E6-4FD2-99FB-C002306B0DAC} = {A55F487E-F618-4289-9B55-26F48BCCF121}
+		{BED31882-89BC-4A8D-8BCC-8AF883E9AA18} = {A55F487E-F618-4289-9B55-26F48BCCF121}
+		{E60EB4A0-4E74-4E81-B975-27DCCC0B14A1} = {1C67668E-CC49-44F3-9587-24CA368F3DF1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB756074-9CB4-4251-BB81-A975411CC045}
+	EndGlobalSection
+EndGlobal
