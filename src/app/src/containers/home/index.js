@@ -89,12 +89,7 @@ const EnhancedTableToolbar = props => {
         </Typography>
       ) : (
         <div>
-          <Typography className={classes.title} variant="h6" id="tableTitle">
-            Copa de filmes
-          </Typography>
-          <Typography id="tableSubTitle">
-            selecione 8 filmes que você deseja que entre na competição e clique em gerar
-          </Typography>
+          
         </div>
       )}
 
@@ -181,6 +176,12 @@ const EnhancedTable = props => {
 
   return (
     <div className={classes.root}>
+      <Typography className={classes.title} variant="h6" id="tableTitle">
+        Copa de filmes
+      </Typography>
+      <Typography id="tableSubTitle">
+        selecione 8 filmes que você deseja que entre na competição e clique em gerar
+      </Typography>
       <Paper className={classes.paper}>
         <EnhancedTableToolbar numSelected={selected.length} contest={contest}/>
         <div className={classes.tableWrapper}>
