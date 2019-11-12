@@ -13,21 +13,17 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) { 
-    case CONTEST_CHAMPIONSHIP:
-      return {
-        ...state,
-        isContest: !state.isContest
-      }
-
       case CONTEST_CHAMPIONSHIP_REQUESTED:
-      return {
-        ...state,
-        isContest: true
-      }
+        return {
+          ...state,
+          result: action.result,
+          isContest: true
+        }
 
       case DATA_INITIALIZED:
         return{
           ...state,
+          movies: action.movies,
           isDataInitialized: true
         }
 
@@ -38,10 +34,11 @@ export default (state = initialState, action) => {
 
 export const getInitalData = () => async dispatch => {
   try {
-      let movies = await axios
-          .get("https://copadosfilmes.azurewebsites.net/api/filmes");
-      dispatch ({ type: DATA_INITIALIZED, movies }); 
-      console.log(movies);
+      await axios
+          .get("https://copadosfilmes.azurewebsites.net/api/filmes")
+          .then(response => {
+            dispatch ({ type: DATA_INITIALIZED, movies: response.data });
+          });
   }catch {
       console.log("Erro para recuperar filmes.");
   }
@@ -49,10 +46,13 @@ export const getInitalData = () => async dispatch => {
 
 export const contestChampioship = (movies) => async dispatch => {
   try {
-    let result = await axios
-        .post("http://localhost:52518/api/v1/campeonato", movies);
-    dispatch ({ type: CONTEST_CHAMPIONSHIP_REQUESTED, result }); 
-    console.log(movies);
+    debugger;
+      await axios
+        .post("http://localhost:52518/api/v1/campeonato", { filmes: movies })
+        .then(response => {
+          dispatch ({ type: CONTEST_CHAMPIONSHIP_REQUESTED, result: response.data });
+          console.log(response.data);
+        });
   }catch {
     console.log("Erro para gerar resultado do campeonato.");
   }

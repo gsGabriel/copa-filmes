@@ -3,6 +3,7 @@ using CopaFilmes.API.Filters;
 using CopaFilmes.API.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +29,18 @@ namespace CopaFilmes.API
             {
                 options.EnableEndpointRouting = true;
                 options.Filters.Add(new ExceptionFilter());
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    "AllowAllOrigins",
+                    builder => builder
+                                    .AllowAnyOrigin()
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod());
+
+                options.DefaultPolicyName = "AllowAllOrigins";
             });
 
             services.AddApiVersioning(
@@ -56,7 +69,7 @@ namespace CopaFilmes.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseAuthorization();
+            app.UseCors("AllowAllOrigins");
 
             app.UseRouting();
 

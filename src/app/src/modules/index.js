@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import champioship from './champioship'
+import championship from './championship'
 
 export default combineReducers({
-  champioship
+  championship
 })

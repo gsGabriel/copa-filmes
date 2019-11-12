@@ -1,6 +1,7 @@
 ﻿using CopaFilmes.API.V1.Models;
 using CopaFilmes.Campeonato.Command;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Linq;
