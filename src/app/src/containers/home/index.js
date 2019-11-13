@@ -29,7 +29,7 @@ const headCells = [
   { id: 'nota', numeric: true, disablePadding: true, label: 'Nota' },
 ];
 
-function EnhancedTableHead(props) {
+function MoviesListHead(props) {
 
   return (
     <TableHead>
@@ -47,7 +47,7 @@ function EnhancedTableHead(props) {
   );
 }
 
-EnhancedTableHead.propTypes = {
+MoviesListHead.propTypes = {
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,
   rowCount: PropTypes.number.isRequired,
@@ -73,7 +73,7 @@ const useToolbarStyles = makeStyles(theme => ({
   },
 }));
 
-const EnhancedTableToolbar = props => {
+const MoviesListToolbar = props => {
   const classes = useToolbarStyles();
   const { numSelected, contest } = props;
 
@@ -106,7 +106,7 @@ const EnhancedTableToolbar = props => {
   );
 };
 
-EnhancedTableToolbar.propTypes = {
+MoviesListToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
   contest: PropTypes.func.isRequired
 };
@@ -139,7 +139,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const EnhancedTable = props => {
+const MoviesList = props => {
   const classes = useStyles();
   const [selected, setSelected] = React.useState([]);
   const { movies, contestChampioship, changePage } = props;
@@ -175,54 +175,62 @@ const EnhancedTable = props => {
   }
 
   return (
-      <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} contest={contest}/>
-        <div className={classes.tableWrapper}>
-          <Table
-            className={classes.table}
-            aria-labelledby="tableTitle"
-            size="medium"
-            aria-label="enhanced table"
-          >
-            <EnhancedTableHead
-              classes={classes}
-              numSelected={selected.length}
-              rowCount={movies.length}
-            />
-            <TableBody>
-              {movies
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row);
-                  const labelId = `enhanced-table-checkbox-${index}`;
+    <div className={classes.root}>
+      <Typography className={classes.title} variant="h6" id="tableTitle">
+          Copa de filmes
+        </Typography>
+        <Typography id="tableSubTitle">
+          selecione 8 filmes que você deseja que entre na competição e clique em gerar
+        </Typography>
+        <Paper className={classes.paper}>
+          <MoviesListToolbar numSelected={selected.length} contest={contest}/>
+          <div className={classes.tableWrapper}>
+            <Table
+              className={classes.table}
+              aria-labelledby="tableTitle"
+              size="medium"
+              aria-label="enhanced table"
+            >
+              <MoviesListHead
+                classes={classes}
+                numSelected={selected.length}
+                rowCount={movies.length}
+              />
+              <TableBody>
+                {movies
+                  .map((row, index) => {
+                    const isItemSelected = isSelected(row);
+                    const labelId = `enhanced-table-checkbox-${index}`;
 
-                  return (
-                    <TableRow
-                      hover
-                      onClick={event => handleClick(event, row)}
-                      role="checkbox"
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row.id}
-                      selected={isItemSelected}
-                    >
-                      <TableCell padding="checkbox">
-                        <Checkbox
-                          checked={isItemSelected}
-                          inputProps={{ 'aria-labelledby': labelId }}
-                        />
-                      </TableCell>
-                      <TableCell component="th" id={labelId} scope="row" padding="none">
-                        {row.titulo}
-                      </TableCell>
-                      <TableCell align="right">{row.ano}</TableCell>
-                      <TableCell align="right">{row.nota}</TableCell>
-                    </TableRow>
-                  );
-                })}
-            </TableBody>
-          </Table>
-        </div>
-      </Paper>
+                    return (
+                      <TableRow
+                        hover
+                        onClick={event => handleClick(event, row)}
+                        role="checkbox"
+                        aria-checked={isItemSelected}
+                        tabIndex={-1}
+                        key={row.id}
+                        selected={isItemSelected}
+                      >
+                        <TableCell padding="checkbox">
+                          <Checkbox
+                            checked={isItemSelected}
+                            inputProps={{ 'aria-labelledby': labelId }}
+                          />
+                        </TableCell>
+                        <TableCell component="th" id={labelId} scope="row" padding="none">
+                          {row.titulo}
+                        </TableCell>
+                        <TableCell align="right">{row.ano}</TableCell>
+                        <TableCell align="right">{row.nota}</TableCell>
+                      </TableRow>
+                    );
+                  })}
+              </TableBody>
+            </Table>
+          </div>
+        </Paper>
+      </div>
   );
 }
 
@@ -234,18 +242,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const classes = useStyles();
-
-    return(
-      <div className={classes.root}>
-        <Typography className={classes.title} variant="h6" id="tableTitle">
-          Copa de filmes
-        </Typography>
-        <Typography id="tableSubTitle">
-          selecione 8 filmes que você deseja que entre na competição e clique em gerar
-        </Typography>
-        <EnhancedTable movies={this.props.movies} contestChampioship={this.props.contestChampioship} changePage={this.props.changePage} ></EnhancedTable>
-      </div>)
+    return(<MoviesList movies={this.props.movies} contestChampioship={this.props.contestChampioship} changePage={this.props.changePage} ></MoviesList>)
   }
 }
 
